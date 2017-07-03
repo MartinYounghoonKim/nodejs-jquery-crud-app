@@ -1,0 +1,23 @@
+<div class="table-wrap">
+	<table>
+	    <thead>
+	        <tr>
+	            <th>creator_id</th>
+	            <th>title</th>
+	            <th>content</th>
+	        </tr>
+	    </thead>
+	    <tbody data-bind="wrap">
+	    </tbody>
+	    <script type="text/x-handlebars-template" id="getDataContents">
+	        <tr>
+	            <td>{{creator_id}}</td>
+	            <td>{{title}}</td>
+	            <td>{{content}}</td>
+	        </tr>
+	    </script>
+	</table>
+	<div class="table-wrap__write-btn-wrap">
+		<a href="/write" class="table-wrap__write-btn-wrap__btn">글쓰기</a>
+	</div>
+</div>
