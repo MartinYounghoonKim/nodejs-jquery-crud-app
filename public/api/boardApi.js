@@ -6,7 +6,7 @@ define([
 			var result;
 			$.ajax({
 				type:"GET",
-				url:"/studydb",
+				url:"/api/Board",
 				async: false,
 				dataType:"JSON",
 				success : function(data){
@@ -18,7 +18,6 @@ define([
 			});
 			return result;
 		}
-
 		return {
 			getApiData : getApiData
 		}

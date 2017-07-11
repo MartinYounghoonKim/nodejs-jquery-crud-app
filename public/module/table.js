@@ -27,8 +27,6 @@ define([
 				bindTarget.append(dataItem);
 			}());
 		}
-
-
 		return{
 			init: init
 		}

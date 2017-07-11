@@ -2,8 +2,6 @@ requirejs.config({
     baseUrl: '/',
     paths:{
     'jquery': 'lib/jquery-1.9.1.min',
-    'jqueryEasing': 'lib/jquery.easing.min',
-    'jqueryUI': 'lib/jquery-ui',
     'cssLoader' : 'lib/css.min',
     'handlebars' : 'lib/handlebars-v4.0.5',
     'text' : 'lib/text',
@@ -12,7 +10,6 @@ requirejs.config({
     'index' : 'controller/index',
     'index2' : 'controller/index2',
     'Board' : 'controller/Board',
-    'Write' : 'controller/Write',
     'Handlebar' : 'controller/Handlebar',
 
 	//Function Module
@@ -21,7 +18,6 @@ requirejs.config({
 	'selectBox' : 'module/selectBox',
     'tab':'module/tab',
     'table':'module/table',
-    'write':'module/write',
 
     //APi
     'boardApi' : 'api/boardApi'

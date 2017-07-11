@@ -34,3 +34,15 @@ table{ width:100%; }
 td, th{ padding:10px; border:1px solid #ececec; text-align:Center; }
 .table-wrap__write-btn-wrap{ margin-top:20px; text-align:right; }
 .table-wrap__write-btn-wrap .table-wrap__write-btn-wrap__btn{ display:inline-block; padding:10px 20px; border:1px solid #ececec;}
+
+
+.write-wrap{ margin-top:45px; }
+.write-wrap table{ width:100%; }
+.write-wrap table th{ background-color:#ececec;}
+.write-wrap table th,.write-wrap table td{ padding:10px; border:1px solid #999; }
+.write-wrap table td input{ width:100%; }
+
+.btn-wrap{ margin-top:20px; }
+.btn-wrap{ overflow:hidden; text-align:center; }
+.btn-wrap button { float:right; padding:10px 20px; border:1px solid #ececec; }
+.btn-wrap a{ float:left; padding:10px 20px; border:1px solid #ececec;}
