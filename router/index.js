@@ -81,5 +81,20 @@ module.exports = (app)=>{
                 res.redirect('/board');
             }
         })
+    });
+    app.post('/edit/Board', (req,res)=>{
+        let idx = req.body.idx;
+        let title = req.body.title;
+        let content = req.body.content;
+        let creator_id = req.body.creator_id;
+        let updateSql = 'UPDATE board SET creator_id=?, title=?, content=? WHERE idx=?';
+        connection.query(updateSql,[creator_id, title, content,idx],(err,result,fields)=>{
+            if(err){
+                console.log(err);
+                res.status(500).send("Error!!!");
+            } else {
+                res.redirect('/board');
+            }
+        })
     })
 }

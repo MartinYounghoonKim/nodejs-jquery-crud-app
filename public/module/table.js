@@ -42,21 +42,42 @@ define([
 		}
 
 		function insertData(){
-			$.ajax({
-				type:"POST",
-				url:"/new/Board",
-				dataType:"JSON",
-				data:{
-					'title':$("#title").val(),
-					'creator_id':$("#creator_id").val(),
-					'content':$("#content").val()
-				},
-				complete:function(){
-					// TODO: 재로딩 하면 됨
-					//alert("완료")
-					getData();
-				}
-			});
+			if(INDEX){
+				$.ajax({
+					type:"POST",
+					url:"/edit/Board",
+					dataType:"JSON",
+					data:{
+						'title':$("#title").val(),
+						'creator_id':$("#creator_id").val(),
+						'content':$("#content").val(),
+						'idx':INDEX
+					},
+					complete:function(){
+						// TODO: 재로딩 하면 됨
+						//alert("완료")
+						getData();
+						INDEX=undefined;
+					}
+				});
+			} else {
+				$.ajax({
+					type:"POST",
+					url:"/new/Board",
+					dataType:"JSON",
+					data:{
+						'title':$("#title").val(),
+						'creator_id':$("#creator_id").val(),
+						'content':$("#content").val()
+					},
+					complete:function(){
+						//alert("완료")
+						getData();
+						INDEX=undefined;
+					}
+				});
+			}
+
 		}
 		var dynamicInit = function(){
 			var editButton = $("[data-module-btn='edit']");
