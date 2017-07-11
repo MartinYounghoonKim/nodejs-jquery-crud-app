@@ -1,5 +1,5 @@
 requirejs.config({
-    baseUrl: '/',
+    baseUrl: './',
     paths:{
     'jquery': 'lib/jquery-1.9.1.min',
     'cssLoader' : 'lib/css.min',

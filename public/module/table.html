@@ -7,46 +7,50 @@
 	            <th>제목</th>
 				<th>내용</th>
 	            <th>작성일자</th>
+				<th></th>
 	        </tr>
 	    </thead>
 	    <tbody data-bind="wrap">
 	    </tbody>
 	    <script type="text/x-handlebars-template" id="getDataContents">
-	        <tr>
+	        <tr data-module-idx={{idx}}>
 				<td>{{idx}}</td>
-	            <td>{{creator_id}}</td>
-	            <td>{{title}}</td>
-				<td>{{content}}</td>
+	            <td><span data-module-contents="creator_id">{{creator_id}}</span></td>
+	            <td><span data-module-contents="title">{{title}}</span></td>
+				<td><span data-module-contents="content">{{content}}</span></td>
 	            <td>{{regdate}}</td>
+				<td>
+					<a data-module-btn="edit">수정</a>
+					<a data-module-btn="delete">삭제</a>
+				</td>
 	        </tr>
 	    </script>
 	</table>
 	<div class="write-wrap">
-	    <form name="user" method="post" action="/new/Board">
-	        <table>
-	            <caption>글쓰기 폼</caption>
-	            <colgroup>
-	                <col style="width:20%"/>
-	                <col style="width:80%"/>
-	            </colgroup>
-	            <tbody>
-	                <tr>
-	                    <th scope="row">작성자 아이디</th>
-	                    <td><input type="text" name="creator_id" id="creator_id"/></td>
-	                </tr>
-	                <tr>
-	                    <th scope="row">제목</th>
-	                    <td><input type="text" name="title" id="title"/></td>
-	                </tr>
-	                <tr>
-	                    <th scope="row">내용</th>
-	                    <td><input type="text" name="content" id="content"/></td>
-	                </tr>
-	            </tbody>
-	        </table>
-	        <div class="btn-wrap is-center">
-	            <button type="submit" >Submit</button>
-	        </div>
-	    </form>
+        <table>
+            <caption>글쓰기 폼</caption>
+            <colgroup>
+                <col style="width:20%"/>
+                <col style="width:80%"/>
+            </colgroup>
+            <tbody>
+                <tr>
+                    <th scope="row">작성자 아이디</th>
+                    <td><input type="text" name="creator_id" required id="creator_id"/></td>
+                </tr>
+                <tr>
+                    <th scope="row">제목</th>
+                    <td><input type="text" name="title" required id="title"/></td>
+                </tr>
+                <tr>
+                    <th scope="row">내용</th>
+                    <td><input type="text" name="content" required id="content"/></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="btn-wrap is-center">
+			<button type="reset">Cancel</button>
+            <button type="submit" data-module-button="submit">Submit</button>
+        </div>
 	</div>
 </div>

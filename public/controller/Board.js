@@ -8,8 +8,9 @@ define([], function(){
         $('document,body').append(text);
         bindTable.init({
             "wrapper" : "#getDataContents",
-            "bindTarget" : "[data-bind='wrap']"
+            "bindTarget" : "[data-bind='wrap']",
+            "editButton" : "[data-module-btn='edit']",
+            "bindButton" : "[data-module-button='submit']"
         });
     });
-
 })
