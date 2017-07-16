@@ -7,18 +7,11 @@ requirejs.config({
     'text' : 'lib/text',
 
     //Controller
-    'index' : 'controller/index',
-    'index2' : 'controller/index2',
-    'Board' : 'controller/Board',
-    'Handlebar' : 'controller/Handlebar',
+    'CrudBoard' : 'controller/CrudBoard',
 
 	//Function Module
-    'Device' : 'constant/Device',
-	'responsive' : 'module/responsive',
-	'selectBox' : 'module/selectBox',
-    'tab':'module/tab',
-    'table':'module/table',
-
+    'crudBoard':'module/crudBoard',
+    
     //APi
     'boardApi' : 'api/boardApi'
     },
