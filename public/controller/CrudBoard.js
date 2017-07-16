@@ -1,12 +1,12 @@
 define([], function(){
     requirejs([
         "jquery",
-        "text!module/table.html",
-        "css!module/table",
-        "table"
-    ], function($,text, table, bindTable) {
+        "text!module/crudBoard.html",
+        "css!module/crudBoard",
+        "crudBoard"
+    ], function($,text, style, crudBoard) {
         $('document,body').append(text);
-        bindTable.init({
+        crudBoard.init({
             "wrapper" : "#getDataContents",
             "bindTarget" : "[data-bind='wrap']",
             "editButton" : "[data-module-btn='edit']",

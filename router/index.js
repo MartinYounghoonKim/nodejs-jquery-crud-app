@@ -6,43 +6,12 @@ connection.connect();
 // TODO: render 파일이 같은 파일인데, 코드를 정리하는 방법이 없는지
 module.exports = (app)=>{
     app.use(bodyParser.urlencoded({ extended: false }));
-    /*app.get('/board/edit/:idx',(req,res)=>{
-        let inquerySql = 'SELECT * FROM board WHERE idx=?';
-        let idx=req.params.idx;
-        console.log(idx)
-        connection.query(inquerySql,[idx],(err,result,fields)=>{
-            if(err){
-
-            } else {
-                res.send(result)
-            }
-        })
-    })*/
-    /*app.get(['/topic','/topic/:id'], function(req,res){
-        let sql = 'SELECT * FROM test_db';
-        connection.query(sql, (err, result, fields)=>{
-            let id = req.params.id;
-            if(id) {
-                let sql = 'SELECT * FROM test_db WHERE creator_id=?';
-                connection.query(sql, [id], (err, result, fields)=>{
-                    if(err){
-                        console.log(err);
-                    } else {
-                        res.render('view_mysql',{results:result, result:result[0]});
-                    }
-                })
-            } else {
-                let params = ['Hello', "there"];
-                res.render('view_mysql',{result:result});
-            }
-        })
-    });*/
-    app.get(['/board','/board/edit/:idx'],(req,res)=>{
+    app.get('/',(req,res)=>{
         let idx = req.params.idx;
         if(idx){
             res.send('test')
         } else {
-            res.render('index.ejs',{reference:"Board"});
+            res.render('index.ejs',{reference:"CrudBoard"});
         }
     });
     app.get('/api/Board',(req,res)=>{

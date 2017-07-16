@@ -1,7 +1,7 @@
 define([
 	'jquery'
 	,'handlebars'
-	,'boardApi'
+	,'crudBoardApi'
 ], function($,handlebars, data){
 	var bindTable = (function(){
 		var wrapper;
