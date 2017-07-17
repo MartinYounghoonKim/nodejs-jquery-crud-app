@@ -13,6 +13,7 @@
 	    <tbody data-bind="wrap">
 	    </tbody>
 	    <script type="text/x-handlebars-template" id="getDataContents">
+			{{#boardData}}
 	        <tr data-module-idx={{idx}}>
 				<td>{{idx}}</td>
 	            <td><span data-module-contents="creator_id">{{creator_id}}</span></td>
@@ -24,6 +25,7 @@
 					<a data-module-btn="delete">삭제</a>
 				</td>
 	        </tr>
+			{{/boardData}}
 	    </script>
 	</table>
 	<div class="write-wrap">
