@@ -35,7 +35,7 @@ module.exports = (app)=>{
                 console.log(err);
                 res.status(500).send("Error!!!");
             } else {
-                res.redirect('/board');
+                res.redirect('/');
             }
         })
     });
@@ -47,7 +47,7 @@ module.exports = (app)=>{
                 console.log(err);
                 res.status(500).send("Error!!!");
             } else {
-                res.redirect('/board');
+                res.redirect('/');
             }
         })
     });
@@ -62,7 +62,7 @@ module.exports = (app)=>{
                 console.log(err);
                 res.status(500).send("Error!!!");
             } else {
-                res.redirect('/board');
+                res.redirect('/');
             }
         })
     })
