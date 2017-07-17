@@ -2,7 +2,7 @@ define([
 	'jquery'
 	,'handlebars'
 	,'crudBoardApi'
-], function($,handlebars, data){
+], function($,handlebars, getApiData){
 	var bindTable = (function(){
 		var wrapper;
 		var bindTarget;
@@ -14,8 +14,7 @@ define([
 			bindTarget=$(options.bindTarget);
 			bindButton=$(options.bindButton);
 
-			bindEvents()
-
+			bindEvents();
 		}
 
 		function bindEvents(){
@@ -27,57 +26,33 @@ define([
 			if(bindTarget.children("tr").size()>0){
 				bindTarget.children("tr").remove();
 			}
+
 			var dummyDom = wrapper.html();
 			var template= handlebars.compile(dummyDom);
-			var dataItem="";
-
-			for(var i in data.getApiData()){
-				dataItem += template( data.getApiData()[i]);
-			}
-
-			var makeDom=( function(){
-				bindTarget.append(dataItem);
-			}());
+			var dataItem = template({
+				"boardData" :getApiData.callDataApi("GET","/api/Board","JSON")
+			});
+			bindTarget.append(dataItem);
 			dynamicInit().bindEvents();
 		}
 
 		function insertData(){
 			if(INDEX){
-				$.ajax({
-					type:"POST",
-					url:"/edit/Board",
-					dataType:"JSON",
-					data:{
-						'title':$("#title").val(),
-						'creator_id':$("#creator_id").val(),
-						'content':$("#content").val(),
-						'idx':INDEX
-					},
-					complete:function(){
-						// TODO: 재로딩 하면 됨
-						//alert("완료")
-						getData();
-						INDEX=undefined;
-					}
+				getApiData.callDataApi("POST","/edit/Board","Text", {
+					'title':$("#title").val(),
+					'creator_id':$("#creator_id").val(),
+					'content':$("#content").val(),
+					'idx':INDEX
 				});
 			} else {
-				$.ajax({
-					type:"POST",
-					url:"/new/Board",
-					dataType:"JSON",
-					data:{
-						'title':$("#title").val(),
-						'creator_id':$("#creator_id").val(),
-						'content':$("#content").val()
-					},
-					complete:function(){
-						//alert("완료")
-						getData();
-						INDEX=undefined;
-					}
+				getApiData.callDataApi("POST","/new/Board","Text", {
+					'title':$("#title").val(),
+					'creator_id':$("#creator_id").val(),
+					'content':$("#content").val()
 				});
 			}
-
+			INDEX=undefined;
+			getData();
 		}
 		var dynamicInit = function(){
 			var editButton = $("[data-module-btn='edit']");
