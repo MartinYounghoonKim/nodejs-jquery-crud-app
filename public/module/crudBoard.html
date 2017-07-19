@@ -37,15 +37,15 @@
             </colgroup>
             <tbody>
                 <tr>
-                    <th scope="row">작성자 아이디</th>
+                    <th scope="row">creator_id</th>
                     <td><input type="text" name="creator_id" required id="creator_id"/></td>
                 </tr>
                 <tr>
-                    <th scope="row">제목</th>
+                    <th scope="row">title</th>
                     <td><input type="text" name="title" required id="title"/></td>
                 </tr>
                 <tr>
-                    <th scope="row">내용</th>
+                    <th scope="row">content</th>
                     <td><input type="text" name="content" required id="content"/></td>
                 </tr>
             </tbody>
@@ -54,5 +54,43 @@
 			<button type="reset">Cancel</button>
             <button type="submit" data-module-button="submit">Submit</button>
         </div>
+	</div>
+	<script type="text/x-handlebars-template" id="editUserDataPopUp">
+		<dl>
+			<dt>idx</dt>
+			<dd>30</dd>
+		</dl>
+		<dl>
+			<dt>creator_id</dt>
+			<dd>test</dd>
+		</dl>
+		<dl>
+			<dt>title</dt>
+			<dd><input type="text"/></dd>
+		</dl>
+		<dl>
+			<dt>content</dt>
+			<dd><textarea></textarea></dd>
+		</dl>
+	</script>
+	<div class="layer-wrapper">
+		<div class="layer-wrapper__layer-pop" data-bind-target="editUserData">
+			<dl>
+				<dt>idx</dt>
+				<dd>30</dd>
+			</dl>
+			<dl>
+				<dt>creator_id</dt>
+				<dd>test</dd>
+			</dl>
+			<dl>
+				<dt>title</dt>
+				<dd><input type="text"/></dd>
+			</dl>
+			<dl>
+				<dt>content</dt>
+				<dd><textarea></textarea></dd>
+			</dl>
+		</div>
 	</div>
 </div>
