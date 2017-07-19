@@ -24,7 +24,7 @@ module.exports = (app)=>{
                 res.send(result);
             }
         })
-    })
+    });
     app.post('/new/Board', (req,res)=>{
         let title = req.body.title;
         let content = req.body.content;
@@ -63,6 +63,19 @@ module.exports = (app)=>{
                 res.status(500).send("Error!!!");
             } else {
                 res.redirect('/');
+            }
+        })
+    });
+    app.get('/edit/board1', (req,res)=>{
+        let idx = req.query.idx;
+        let searchSql = 'SELECT * FROM board WHERE idx=?';
+        connection.query(searchSql, [idx], (err, result, fields)=>{
+            if(err){
+                console.log(err);
+                res.send("Error!!");
+            } else {
+                console.log(result);
+                res.send(result);
             }
         })
     })

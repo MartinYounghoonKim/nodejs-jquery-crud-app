@@ -22,7 +22,6 @@ define([
 					result=data;
 				},
 				error : function(xhr, status, error) {
-					console.log(xhr, + "\n" + status,+ "\n" + error)
 					alert("에러가 발생했습니다.");
 				}
 			});
