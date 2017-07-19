@@ -9,7 +9,9 @@ define([], function(){
         crudBoard.init({
             "wrapper" : "#getDataContents",
             "bindTarget" : "[data-bind='wrap']",
-            "bindButton" : "[data-module-button='submit']"
+            "bindButton" : "[data-module-button='submit']",
+            "editingLayerPop" : "#editUserDataPopUp",
+            "layerPopUp" : "[data-bind-target='editUserData']"
         });
     });
 })
