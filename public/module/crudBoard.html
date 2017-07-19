@@ -65,39 +65,25 @@
 	<script type="text/x-handlebars-template" id="editUserDataPopUp">
 		<dl>
 			<dt>idx</dt>
-			<dd>30</dd>
+			<dd>{{idx}}</dd>
 		</dl>
 		<dl>
 			<dt>creator_id</dt>
-			<dd>test</dd>
+			<dd>{{creator_id}}</dd>
 		</dl>
 		<dl>
 			<dt>title</dt>
-			<dd><input type="text"/></dd>
+			<dd><input type="text" value="{{title}}"/></dd>
 		</dl>
 		<dl>
 			<dt>content</dt>
-			<dd><textarea></textarea></dd>
+			<dd><textarea>{{content}}</textarea></dd>
 		</dl>
 	</script>
+	<!-- 레이어팝업  -->
 	<div class="layer-wrapper">
 		<div class="layer-wrapper__layer-pop" data-bind-target="editUserData">
-			<dl>
-				<dt>idx</dt>
-				<dd>30</dd>
-			</dl>
-			<dl>
-				<dt>creator_id</dt>
-				<dd>test</dd>
-			</dl>
-			<dl>
-				<dt>title</dt>
-				<dd><input type="text"/></dd>
-			</dl>
-			<dl>
-				<dt>content</dt>
-				<dd><textarea></textarea></dd>
-			</dl>
 		</div>
 	</div>
+	<!--// 레이어팝업  -->
 </div>
