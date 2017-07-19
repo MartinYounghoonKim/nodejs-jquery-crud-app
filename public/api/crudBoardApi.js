@@ -28,38 +28,7 @@ define([
 			});
 			return result;
 		}
-
-		var getApiData = function (){
-			var result;
-			function callDataApi(apiType, apiUrl){
-				$.ajax({
-					type:apiType,
-					url:apiUrl,
-					dataType:"JSON",
-					success : function(data){
-						//return data;
-					},
-					error : function(xhr, status, error) {
-						alert("에러가 발생했습니다.");
-					}
-				});
-			}
-			$.ajax({
-				type:"GET",
-				url:"/api/Board",
-				async: false,
-				dataType:"JSON",
-				success : function(data){
-					result = data;
-				},
-				error : function(xhr, status, error) {
-					alert("에러가 발생했습니다.");
-				}
-			});
-			return result;
-		}
 		return {
-			getApiData : getApiData,
 			callDataApi : callDataApi
 		}
 	}());
