@@ -8,6 +8,9 @@ define([
 		var bindTarget;
 		var bindButton;
 		var INDEX;
+		var userTextId = $("#creator_id");
+		var userTextTitle = $("#title");
+		var userTextContent = $("#content");
 
 		function init(options){
 			wrapper = $(options.wrapper);
@@ -18,7 +21,7 @@ define([
 		}
 
 		function bindEvents(){
-			bindButton.on("click", insertData);
+			bindButton.on("click", checkTextFill);
 			getData();
 		}
 
@@ -57,9 +60,7 @@ define([
 		var dynamicInit = function(){
 			var editButton = $("[data-module-btn='edit']");
 			var deleteButton = $("[data-module-btn='delete']");
-			var creator_id = $("#creator_id");
-			var title = $("#title");
-			var content = $("#content");
+
 			function bindEvents(){
 				editButton.on("click", function(){
 					setEachData($(this));
@@ -93,9 +94,9 @@ define([
 				var contentContent = parents.find("[data-module-contents='content']").text();
 				INDEX = parents.data("module-idx");
 
-				creator_id.val(creatorIdContent);
-				title.val(titleContent);
-				content.val(contentContent);
+				userTextId.val(creatorIdContent);
+				userTextTitle.val(titleContent);
+				userTextContent.val(contentContent);
 			}
 			function makeDim(){
 				bindTarget.parent("table").append("<div class='dim'></div>");
@@ -104,6 +105,12 @@ define([
 				bindEvents:bindEvents
 			}
 		};
+
+		function checkTextFill(){
+			console.log(userTextId.size() )
+			console.log( userTextId.val());
+			//insertData();
+		}
 
 		return{
 			init: init
