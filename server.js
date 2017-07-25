@@ -1,7 +1,14 @@
 const express = require('express');
 const app = express();
-const router = require('./router/index')(app);
 const port = 4000;
+const mysql = require('mysql');
+const dbconfig   = require('./config/database.js');
+const connection = mysql.createConnection(dbconfig);
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({ extended: false }));
+connection.connect();
+const router = require('./router/index')(app, mysql, bodyParser, connection);
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
