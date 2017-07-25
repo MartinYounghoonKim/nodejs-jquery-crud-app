@@ -73,17 +73,24 @@
 		</dl>
 		<dl>
 			<dt>title</dt>
-			<dd><input type="text" value="{{title}}"/></dd>
+			<dd><input type="text" id="edit-title" value="{{title}}"/></dd>
 		</dl>
 		<dl>
 			<dt>content</dt>
-			<dd><textarea>{{content}}</textarea></dd>
+			<dd><textarea id="edit-content">{{content}}</textarea></dd>
 		</dl>
 	</script>
 	<!-- 레이어팝업  -->
 	<div class="layer-wrapper">
-		<div class="layer-wrapper__layer-pop" data-bind-target="editUserData">
+		<div class="layer-wrapper__layer-pop">
+			<div data-bind-target="editUserData">
+			</div>
+			<div class="btn-wrap" data-layer-ctrl="wrap">
+				<button data-layer-ctrl="edit" type="button">Edit</button>
+				<button data-layer-ctrl="cancel" type="button">Cancel</button>
+			</div>
 		</div>
+
 	</div>
 	<!--// 레이어팝업  -->
 </div>

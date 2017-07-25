@@ -55,13 +55,14 @@ module.exports = (app)=>{
         let idx = req.body.idx;
         let title = req.body.title;
         let content = req.body.content;
-        let creator_id = req.body.creator_id;
-        let updateSql = 'UPDATE board SET creator_id=?, title=?, content=? WHERE idx=?';
-        connection.query(updateSql,[creator_id, title, content,idx],(err,result,fields)=>{
+        console.log("idx : " + idx + "\n" + "title : " + title + "\n" + "content : " + content + "\n" )
+        let updateSql = 'UPDATE board SET title=?, content=? WHERE idx=?';
+        connection.query(updateSql,[title, content,idx],(err,result,fields)=>{
             if(err){
                 console.log(err);
                 res.status(500).send("Error!!!");
             } else {
+                console.log("성공" + result)
                 res.redirect('/');
             }
         })
@@ -74,7 +75,6 @@ module.exports = (app)=>{
                 console.log(err);
                 res.send("Error!!");
             } else {
-                console.log(result);
                 res.send(result);
             }
         })

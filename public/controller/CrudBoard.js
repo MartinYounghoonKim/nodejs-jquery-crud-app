@@ -11,7 +11,10 @@ define([], function(){
             "bindTarget" : "[data-bind='wrap']",
             "bindButton" : "[data-module-button='submit']",
             "editingLayerPop" : "#editUserDataPopUp",
-            "layerPopUp" : "[data-bind-target='editUserData']"
+            "layerPopUp" : "[data-bind-target='editUserData']",
+            "layerPopCtrl" : "[data-layer-ctrl='wrap']",
+            "layerPopUpCancelButton" : "[data-layer-ctrl='cancel']",
+            "layerPopUpEditButton" : "[data-layer-ctrl='edit']"
         });
     });
 })

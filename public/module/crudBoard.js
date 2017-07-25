@@ -26,22 +26,29 @@ define([
 				bindTarget : $(options.bindTarget),
 				bindButton : $(options.bindButton),
 				editingLayerPop : $(options.editingLayerPop),
-				layerPopUp : $(options.layerPopUp),
 				creatorIdTextArea : $("#creator_id"),
 				titleTextArea : $("#title"),
-				contentTextArea : $("#content")
+				contentTextArea : $("#content"),
+				layerPopUp : $(options.layerPopUp),
+				layerCancelButton : $(options.layerPopUpCancelButton),
+				layerEditButton : $(options.layerPopUpEditButton)
 			}
 		}
 
 		function bindEvents(){
 			obj.bindButton.on("click", insertUserBoardData);
 			$(document).on("click","[data-module-btn='edit']", function(){
-				setEachData($(this));
-				editUserBoardData($(this));
+				getUserDataToLayerPop($(this));
 			});
 			$(document).on("click", "[data-module-btn='delete']", function(){
 				deleteUserBoardData($(this));
 			})
+			obj.layerCancelButton.on("click", function(){
+				closeLayerPop();
+			});
+			obj.layerEditButton.on("click", function(){
+				editUserBoardData();
+			});
 		}
 
 		function getData(){
@@ -61,27 +68,30 @@ define([
 			var titleUserData = $("#title").val();
 			var creatorIdUserData = $("#creator_id").val();
 			var contentUserData = $("#content").val();
-
-			if(OPTIONS.INDEX){
-				getApiData.callDataApi("POST","/edit/Board","Text", {
-					'title':titleUserData,
-					'creator_id':creatorIdUserData,
-					'content':contentUserData,
-					'idx':OPTIONS.INDEX
-				});
-				OPTIONS.INDEX = undefined;
-			} else {
-				getApiData.callDataApi("POST","/new/Board","Text", {
-					'title':titleUserData,
-					'creator_id':creatorIdUserData,
-					'content':contentUserData
-				});
-			}
+			getApiData.callDataApi("POST","/new/Board","Text", {
+				'title':titleUserData,
+				'creator_id':creatorIdUserData,
+				'content':contentUserData
+			});
 			getData();
 			clearUserTextArea();
 		};
 
-		function editUserBoardData(me){
+		function editUserBoardData(){
+			var titleUserData = $("#edit-title").val();
+			var contentUserData = $("#edit-content").val();
+			getApiData.callDataApi("POST","/edit/Board","Text", {
+				'title':titleUserData,
+				'content':contentUserData,
+				'idx':OPTIONS.INDEX
+			});
+			OPTIONS.INDEX = undefined;
+			getData();
+			clearUserTextArea();
+			closeLayerPop();
+		}
+
+		function getUserDataToLayerPop(me){
 			var dataEditTargetIndex = me.data("temp-index");
 			var data = getApiData.callDataApi("GET","/edit/board1","JSON", {
 				'idx': dataEditTargetIndex
@@ -90,20 +100,14 @@ define([
 			var template = handlebars.compile(dummyDom);
 			var dataItem = template(data[0]);
 			obj.layerPopUp.append(dataItem);
+			OPTIONS.INDEX = me.data("temp-index");
 			$(".layer-wrapper").show();
 		}
 
-		function setEachData(me){
-			var parents = me.closest("[data-module-idx]");
-			var creatorIdContent = parents.find("[data-module-contents='creator_id']").text();
-			var titleContent = parents.find("[data-module-contents='title']").text();
-			var contentContent = parents.find("[data-module-contents='content']").text();
-			OPTIONS.INDEX = me.data("temp-index");
-
-			obj.creatorIdTextArea.val(creatorIdContent);
-			obj.titleTextArea.val(titleContent);
-			obj.contentTextArea.val(contentContent);
-		};
+		function closeLayerPop(){
+			obj.layerPopUp.children().remove();
+			$(".layer-wrapper").hide();
+		}
 		function deleteUserBoardData(me){
 			var isDelete = confirm("삭제하시겠습니까?");
 			if(isDelete === false){
