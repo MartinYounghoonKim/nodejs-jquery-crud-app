@@ -9,6 +9,7 @@ define([
 			IS_BIND_DATA : false,
 			INDEX : undefined
 		}
+		//FIXME : INDEX를 저장할 필요없이, view 화면에서 가져오면 될것.
 		var INDEX;
 		var userTextId = $("#creator_id");
 		var userTextTitle = $("#title");
@@ -50,7 +51,8 @@ define([
 				editUserBoardData();
 			});
 		}
-
+		//FIXME: api와 서비스가 존재.서비스 메소드 - 1. 패치 2.insert 3. delete 4.put()
+		// FIXME: 함수명의 의미가 맞지 않음. 네이밍을 좀더 신경써야함.
 		function getData(){
 			//데이터가 바인딩 되어있는 상태면 OPTIONS.IS_BIND_DATA가 true
 			if(OPTIONS.IS_BIND_DATA === true){
@@ -77,6 +79,7 @@ define([
 			clearUserTextArea();
 		};
 
+		// TODO: MVC 를 분리( MVC 패턴 )- INDEX 값 제거
 		function editUserBoardData(){
 			var titleUserData = $("#edit-title").val();
 			var contentUserData = $("#edit-content").val();
@@ -90,18 +93,25 @@ define([
 			clearUserTextArea();
 			closeLayerPop();
 		}
-
+		//FIXME : 코드가 한 함수 안에 계속 추가되고있음. 변수의 네이밍이 가독성이 없음.
 		function getUserDataToLayerPop(me){
 			var dataEditTargetIndex = me.data("temp-index");
 			var data = getApiData.callDataApi("GET","/edit/board1","JSON", {
 				'idx': dataEditTargetIndex
 			});
+			//FIXME : 예제로 editLayerPopString, source
 			var dummyDom = obj.editingLayerPop.html();
 			var template = handlebars.compile(dummyDom);
 			var dataItem = template(data[0]);
 			obj.layerPopUp.append(dataItem);
 			OPTIONS.INDEX = me.data("temp-index");
 			$(".layer-wrapper").show();
+			// FIXME : modalFormShow, modalFormHide을 별도로 만들고, 옵션을 날림
+			/*
+			modalFormShow(template)
+				.then({id, title, comment}} => update(id, title, comment))
+				.then(() => modalFormHide())
+				.catch(errorMessage => alert(errorMessage));*/
 		}
 
 		function closeLayerPop(){
