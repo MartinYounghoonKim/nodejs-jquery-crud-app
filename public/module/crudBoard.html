@@ -2,6 +2,7 @@
 	<table>
 	    <thead>
 	        <tr>
+				<th>체크박스</th>
 				<th>번호</th>
 	            <th>작성자</th>
 	            <th>제목</th>
@@ -12,10 +13,12 @@
 	    </thead>
 	    <tbody data-bind="wrap">
 	    </tbody>
+		<!--alter table board change isDone isDone TINYINT(1) default '0'; -->
 	    <script type="text/x-handlebars-template" id="getDataContents">
 			{{#if boardData}}
 				{{#boardData}}
 		        <tr data-module-idx={{idx}}>
+					<td>{{isDone}}</td>
 					<td>{{idx}}</td>
 		            <td><span data-module-contents="creator_id">{{creator_id}}</span></td>
 		            <td><span data-module-contents="title">{{title}}</span></td>
