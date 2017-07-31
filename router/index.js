@@ -23,8 +23,9 @@ module.exports = (app, mysql, bodyParser, connection)=>{
         let title = req.body.title;
         let content = req.body.content;
         let creator_id = req.body.creator_id;
-        let insertSql = 'INSERT INTO board(creator_id, title, content) VALUES (?,?,?)';
-        connection.query(insertSql,[creator_id, title, content], (err, result,fields)=>{
+        let user_type = req.body.user_type;
+        let insertSql = 'INSERT INTO board(creator_id, title, content, user_type) VALUES (?,?,?,?)';
+        connection.query(insertSql,[creator_id, title, content,user_type], (err, result,fields)=>{
             if(err){
                 console.log(err);
                 res.status(500).send("Error!!!");

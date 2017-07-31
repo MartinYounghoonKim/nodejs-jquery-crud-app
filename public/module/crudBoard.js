@@ -70,7 +70,10 @@ define([
 			var titleUserData = $("#title").val();
 			var creatorIdUserData = $("#creator_id").val();
 			var contentUserData = $("#content").val();
+			var userType= $("#sort option:selected").val();
+
 			getApiData.callDataApi("POST","/new/Board","Text", {
+				'user_type' :userType,
 				'title':titleUserData,
 				'creator_id':creatorIdUserData,
 				'content':contentUserData
@@ -136,11 +139,18 @@ define([
 			obj.contentTextArea.val("");
 		}
 
-		function checkTextFill(){
-			console.log(userTextId.size() )
-			console.log( userTextId.val());
-			//insertData();
-		}
+		handlebars.registerHelper('checkBoolean', function(boolean){
+			if(boolean == true){
+				return new handlebars.SafeString(
+					"<div>참이당</div>"
+				)
+			} else {
+				console.log(11)
+				return new handlebars.SafeString(
+					"<div>거짓이당</div>"
+				)
+			}
+		})
 
 		return{
 			init: init

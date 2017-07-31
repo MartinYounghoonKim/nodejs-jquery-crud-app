@@ -2,6 +2,7 @@
 	<table>
 	    <thead>
 	        <tr>
+				<th>사용자 타입</th>
 				<th>체크박스</th>
 				<th>번호</th>
 	            <th>작성자</th>
@@ -18,7 +19,8 @@
 			{{#if boardData}}
 				{{#boardData}}
 		        <tr data-module-idx={{idx}}>
-					<td>{{isDone}}</td>
+					<td>{{user_type}}</td>
+					<td>{{checkBoolean isDone}}</td>
 					<td>{{idx}}</td>
 		            <td><span data-module-contents="creator_id">{{creator_id}}</span></td>
 		            <td><span data-module-contents="title">{{title}}</span></td>
@@ -46,6 +48,15 @@
                 <col style="width:80%"/>
             </colgroup>
             <tbody>
+				<tr>
+                    <th scope="row">sort</th>
+                    <td>
+						<select id="sort">
+							<option value="Admin">Admin</option>
+							<option value="User">User</option>
+						</select>
+					</td>
+                </tr>
                 <tr>
                     <th scope="row">creator_id</th>
                     <td><input type="text" name="creator_id" required id="creator_id"/></td>
