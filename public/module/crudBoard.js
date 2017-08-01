@@ -18,7 +18,7 @@ define([
 		function init(options){
 			bindSelector(options);
 			bindEvents();
-			getData();
+			setUserDataToView();
 		}
 
 		function bindSelector(options){
@@ -53,7 +53,7 @@ define([
 		}
 		//FIXME: api와 서비스가 존재.서비스 메소드 - 1. 패치 2.insert 3. delete 4.put()
 		// FIXME: 함수명의 의미가 맞지 않음. 네이밍을 좀더 신경써야함.
-		function getData(){
+		function setUserDataToView(){
 			//데이터가 바인딩 되어있는 상태면 OPTIONS.IS_BIND_DATA가 true
 			if(OPTIONS.IS_BIND_DATA === true){
 				obj.bindTarget.children("tr").remove();
@@ -78,7 +78,7 @@ define([
 				'creator_id':creatorIdUserData,
 				'content':contentUserData
 			});
-			getData();
+			setUserDataToView();
 			clearUserTextArea();
 		};
 
@@ -92,7 +92,7 @@ define([
 				'idx':OPTIONS.INDEX
 			});
 			OPTIONS.INDEX = undefined;
-			getData();
+			setUserDataToView();
 			clearUserTextArea();
 			closeLayerPop();
 		}
@@ -130,7 +130,7 @@ define([
 			getApiData.callDataApi("POST","/delete/Board","Text", {
 				'idx':deleteTarget
 			});
-			getData();
+			setUserDataToView();
 		}
 
 		function clearUserTextArea(){

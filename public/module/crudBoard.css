@@ -37,6 +37,10 @@ td, th{ padding:10px; border:1px solid #ececec; text-align:Center; }
 .table-wrap table{ position:relative;}
 .table-wrap table .dim{ position:absolute; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,.5); }
 
+.filter-wrap{ overflow:hidden; margin-bottom:20px; }
+.filter-wrap li { float:left; margin-right:20px; }
+.filter-wrap li button{ width:80px; height:20px; border:1px solid #ececec; }
+.filter-wrap li button.on{ border-color:#999; }
 
 .write-wrap{ margin-top:45px; }
 .write-wrap table{ width:100%; }
