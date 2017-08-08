@@ -73,5 +73,22 @@ module.exports = (app, mysql, bodyParser, connection)=>{
                 res.send(result);
             }
         })
+    });
+    app.get('/api/FiltersData/:flag', (req,res)=>{
+        const filterFlag = req.params.flag;
+        let inquerySql;
+        if(filterFlag === 'all'){
+            inquerySql = 'SELECT * FROM board';
+        } else {
+            inquerySql = 'SELECT * FROM board WHERE user_type=?';
+        }
+        connection.query(inquerySql,[filterFlag], (err,result, fields)=>{
+            if(err) {
+                console.log(err);
+                res.status(500).send("Error");
+            } else {
+                res.send(result);
+            }
+        })
     })
 }

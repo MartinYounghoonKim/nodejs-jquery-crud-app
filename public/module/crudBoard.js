@@ -32,7 +32,8 @@ define([
 				contentTextArea : $("#content"),
 				layerPopUp : $(options.layerPopUp),
 				layerCancelButton : $(options.layerPopUpCancelButton),
-				layerEditButton : $(options.layerPopUpEditButton)
+				layerEditButton : $(options.layerPopUpEditButton),
+				dataFilters : $("[data-filters]")
 			}
 		}
 
@@ -41,6 +42,7 @@ define([
 			$(document).on("click","[data-module-btn='edit']", function(){
 				getUserDataToLayerPop($(this));
 			});
+			obj.dataFilters.on("click", function(){filteringData($(this))})
 			$(document).on("click", "[data-module-btn='delete']", function(){
 				deleteUserBoardData($(this));
 			})
@@ -139,13 +141,25 @@ define([
 			obj.contentTextArea.val("");
 		}
 
+		function filteringData(me){
+			if(OPTIONS.IS_BIND_DATA === true){
+				obj.bindTarget.children("tr").remove();
+			}
+			var filterFlag = me.data("filters");
+			var dummyDom = obj.wrapper.html();
+			var template= handlebars.compile(dummyDom);
+			var data = { "boardData" : getApiData.callDataApi("GET","/api/FiltersData/" + filterFlag, "JSON") };
+			var dataItem = template(data);
+			obj.bindTarget.append(dataItem);
+			OPTIONS.IS_BIND_DATA = true;
+		}
+
 		handlebars.registerHelper('checkBoolean', function(boolean){
 			if(boolean == true){
 				return new handlebars.SafeString(
 					"<div>참이당</div>"
 				)
 			} else {
-				console.log(11)
 				return new handlebars.SafeString(
 					"<div>거짓이당</div>"
 				)
